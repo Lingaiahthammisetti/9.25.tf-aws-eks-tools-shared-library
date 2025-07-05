@@ -6,10 +6,10 @@ terraform {
     }
   }
 backend "s3" {
-  bucket = "tf-aws-tools-jenkins-remote-state"
-  key = "tf-aws-jenkins-tools-key"
+  bucket = "tf-aws-eks-remote-state"
+  key = "tf-aws-eks-shared-library-jenkins-tools"
   region = "us-east-1"
-  dynamodb_table="tf-aws-tools-jenkins-locking"
+  dynamodb_table = "tf-aws-eks-locking"
   }
 }
 

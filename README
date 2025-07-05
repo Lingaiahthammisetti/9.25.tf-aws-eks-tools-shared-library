@@ -1,6 +1,18 @@
-Jenkins
-Plugins:
+# Jenkins Master and Agents creation and deletion
+```
+terraform init -reconfigure
+```
+```
+terraform plan
+```
+```
+terraform apply -auto-approve
+```
+```
+terraform destroy -auto-approve
+```
 
+# Jenkins Plugins:
 Pipeline stage view
 AnsiColor
 Pipeline Utility Steps

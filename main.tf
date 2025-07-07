@@ -22,7 +22,7 @@ module "jenkins_agent" {
   ami                   = data.aws_ami.ami_info.id
   user_data               = file("${path.module}/install_jenkins_agent.sh")
   subnet_id = "subnet-0a3b249c1f344ef36"
-  iam_instance_profile = "k8s-iam-role-authentication"
+  #iam_instance_profile = "k8s-iam-role-authentication"
   tags = {
     Name   = "Jenkins-Agent"
   }

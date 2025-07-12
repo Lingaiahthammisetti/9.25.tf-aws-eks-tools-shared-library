@@ -7,7 +7,13 @@ module "jenkins_master" {
   ami                   = data.aws_ami.ami_info.id
   user_data               = file("${path.module}/install_jenkins_master.sh")
   subnet_id = "subnet-0a3b249c1f344ef36"
-
+  root_block_device = {
+    encrypted  = false           # Not encrypted
+    type       = "gp3"           # gp3 volume type
+    size       = 100              # 10 GiB
+    iops       = 3000            # 3000 IOPS
+    throughput = 125             # Optional: default for gp3 is 125 MiB/s
+  }
   tags = {
     Name   = "Jenkins-Master"
   }
@@ -22,6 +28,13 @@ module "jenkins_agent" {
   ami                   = data.aws_ami.ami_info.id
   user_data               = file("${path.module}/install_jenkins_agent.sh")
   subnet_id = "subnet-0a3b249c1f344ef36"
+  root_block_device = {
+    encrypted  = false           # Not encrypted
+    type       = "gp3"           # gp3 volume type
+    size       = 100              # 10 GiB
+    iops       = 3000            # 3000 IOPS
+    throughput = 125             # Optional: default for gp3 is 125 MiB/s
+  }
   #iam_instance_profile = "k8s-iam-role-authentication"
   tags = {
     Name   = "Jenkins-Agent"
